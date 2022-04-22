@@ -4,6 +4,12 @@ $account = new Account();
 include("includes/handlers/register-handler.php");
 include("includes/handlers/login-handler.php");
 
+function getInputValue($name) {
+	if(isset($_POST[$name])) {
+		echo $_POST[$name];
+	}
+}
+
 ?>
 
 <html>
@@ -32,28 +38,28 @@ include("includes/handlers/login-handler.php");
 			<p>
 				<?php echo $account->getError("Your username must be between 5 and 25 characters"); ?>
 				<label for="loginUsername">Username</label>
-				<input id="loginUsername" name="loginUsername" type="text" placeholder="e.g. bartSimpson" required>
+				<input id="loginUsername" name="loginUsername" type="text" placeholder="e.g. bartSimpson" value="<?php getInputValue('loginUsername') ?>" required>
 			</p>
 			<p>
 				<?php echo $account->getError("Your first name must be between 2 and 25 characters"); ?>
 				<label for="firstName">First Name</label>
-				<input id="firstName" name="firstName" type="text" placeholder="e.g. Bart" required>
+				<input id="firstName" name="firstName" type="text" placeholder="e.g. Bart" value="<?php getInputValue('firstName') ?>" required>
 			</p>
 			<p>
 				<?php echo $account->getError("Your last name must be between 2 and 25 characters"); ?>
 				<label for="lastName">Last Name</label>
-				<input id="lastName" name="lastName" type="text" placeholder="e.g. Simpson" required>
+				<input id="lastName" name="lastName" type="text" placeholder="e.g. Simpson" value="<?php getInputValue('lastName') ?>" required>
 			</p>
 			<p> 
 				<?php echo $account->getError("Your emails don't match"); ?>
 				<?php echo $account->getError("Email is invalid"); ?>
 				<label for="email">Email</label>
-				<input id="email" name="email" type="email" placeholder="e.g. bart@gmail.com" required>
+				<input id="email" name="email" type="email" placeholder="e.g. bart@gmail.com" value="<?php getInputValue('email') ?>" required>
 			</p>
 			<p>
 
 				<label for="email2">Confirm Email</label>
-				<input id="email2" name="email2" type="email" placeholder="e.g. bart@gmail.com" required>
+				<input id="email2" name="email2" type="email" placeholder="e.g. bart@gmail.com" value="<?php getInputValue('email2') ?>" required>
 			</p>
 			<p>
 				<?php echo $account->getError("Your passwords don't match"); ?>
