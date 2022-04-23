@@ -9,6 +9,21 @@
             $this->con = $con;
 		}
 
+        public function login($un, $pw){
+            $pw = md5($pw);
+
+            $query = mysqli_query($this->con, "SELECT * FROM users WHERE username='$un' AND password='$pw'");
+
+            if(mysqli_num_rows($query) == 1){
+                return true;
+            }
+            else{
+                array_push($this->errorArray, "Your email or password is wrong");
+                return false;
+            }
+
+        }
+
 		public function register($un , $fn, $ln, $em, $em2, $pw, $pw2) {
 			$this->validateUsername($un);
 			$this->validateFirstName($fn);
