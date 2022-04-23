@@ -21,7 +21,7 @@
 				return $this->insertUserDetails($un, $fn, $ln, $em, $pw); 
 				
 			} else {
-				return "Error in executing query";
+				return false;
 			}
 		}
 
@@ -46,6 +46,12 @@
 				array_push($this->errorArray, "Your username must be between 5 and 25 characters");
 				return;
 			}
+
+            $checkUsernameQuery = mysqli_query($this->con, "SELECT username FROM users WHERE username='$un'");
+            if(mysqli_num_rows($checkUsernameQuery) != 0){
+                array_push($this->errorArray, "Username is already taken");
+                return;
+            }
 		}
 
 		private function validateFirstName($fn) {
@@ -72,6 +78,11 @@
 				array_push($this->errorArray, "Email is invalid");
 				return;
 			}
+            $checkEmailQuery = mysqli_query($this->con, "SELECT email FROM users WHERE email='$em'");
+            if(mysqli_num_rows($checkEmailQuery) != 0){
+                array_push($this->errorArray, "Email already in use");
+                return;
+            }
 		}
 
 		private function validatePasswords($pw, $pw2) {

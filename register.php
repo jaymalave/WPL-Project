@@ -38,6 +38,7 @@ function getInputValue($name) {
 			<h2>Create Your Free Account</h2>
 			<p>
 				<?php echo $account->getError("Your username must be between 5 and 25 characters"); ?>
+				<?php echo $account->getError("Username is already taken"); ?>
 				<label for="loginUsername">Username</label>
 				<input id="loginUsername" name="loginUsername" type="text" placeholder="e.g. bartSimpson" value="<?php getInputValue('loginUsername') ?>" required>
 			</p>
@@ -54,6 +55,7 @@ function getInputValue($name) {
 			<p> 
 				<?php echo $account->getError("Your emails don't match"); ?>
 				<?php echo $account->getError("Email is invalid"); ?>
+				<?php echo $account->getError("Email already in use"); ?>
 				<label for="email">Email</label>
 				<input id="email" name="email" type="email" placeholder="e.g. bart@gmail.com" value="<?php getInputValue('email') ?>" required>
 			</p>
