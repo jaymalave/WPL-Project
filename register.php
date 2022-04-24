@@ -16,8 +16,37 @@ function getInputValue($name) {
 <html>
 <head>
 	<title>Spotify But Better</title>
+
+	<link rel="stylesheet" type="text/css" href="assets/css/register.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="assets/js/register.js"></script>
 </head>
 <body>
+<?php
+
+if(isset($_POST['registerButton'])) {
+	echo '<script>
+			$(document).ready(function() {
+				$("#loginForm").hide();
+				$("#registerForm").show();
+			});
+		</script>';
+}
+else {
+	echo '<script>
+			$(document).ready(function() {
+				$("#loginForm").show();
+				$("#registerForm").hide();
+			});
+		</script>';
+}
+
+?>
+
+<div id="background">
+
+    <div id="loginContainer">
 
 	<div id="inputContainer">
 		<form id="loginForm" action="register.php" method="POST">
@@ -33,6 +62,10 @@ function getInputValue($name) {
 			</p>
 
 			<button type="submit" name="loginButton">Log In</button>
+
+			<div class="hasAccountText">
+						<span id="hideLogin">Don't have an account yet? Signup here.</span>
+			</div>
 			
 		</form>
 		<form id="registerForm" action="register.php" method="POST">
@@ -78,9 +111,13 @@ function getInputValue($name) {
 			</p>
 
 			<button type="submit" name="registerButton">Sign Up</button>
-			
+			<div class="hasAccountText">
+						<span id="hideRegister">Already have an account? Log in here.</span>
+					</div>
 		</form>
 	</div>
+</div>
+</div>
 
 </body>
 </html>
