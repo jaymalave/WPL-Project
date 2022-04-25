@@ -14,7 +14,7 @@ else {
 
 <html>
 <head>
-	<title>Welcome to Slotify!</title>
+	<title>Spotify But Better</title>
 
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
