@@ -1,32 +1,5 @@
-<?php
-
-include("includes/config.php");
-
-  if(isset($_SESSION['userLoggedIn'])){
-	  $userLoggedIn = $_SESSION['userLoggedIn'];
-  }
-  else {
-	  header("Location: register.php");
-  }
-?>
+<?php include("includes/header.php"); ?>
 
 
-<html>
-<head>
-	<title>Spotify But Better</title>
-	<link rel="stylesheet" href="assets/css/style.css">
-</head>
 
-<body>
-
-<div id="mainContainer">
-    <div id="topContainer">
-       <?php include("includes/navbarContainer.php") ?>
-    </div>
-	<?php include("includes/nowPlayingContainer.php") ?>
-     
-     
-</div>
-</body>
-
-</html>
+<?php include("includes/footer.php"); ?>
