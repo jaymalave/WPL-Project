@@ -1,7 +1,4 @@
-<?php include("includes/header.php"); 
-include("includes/classes/Album.php");
-include("includes/classes/Artist.php");
-include("includes/classes/Song.php");
+<?php include("includes/includedFiles.php"); 
 
 if(isset($_GET['id'])) {
 	$albumId = $_GET['id'];
@@ -12,6 +9,7 @@ else {
 
 $album = new Album($con, $albumId);
 $artist = $album->getArtist();
+$artistId = $artist->getId();
 ?>
 
 <div class="entityInfo">
@@ -22,7 +20,7 @@ $artist = $album->getArtist();
 
 	<div class="rightSection">
 		<h2><?php echo $album->getTitle(); ?></h2>
-		<p>By <?php echo $artist->getName(); ?></p>
+		<p role="link" tabindex="0" onclick="openPage('artist.php?id=$artistId')">By <?php echo $artist->getName(); ?></p>
 		<p><?php echo $album->getNumberOfSongs(); ?> songs</p>
 
 	</div>
@@ -44,7 +42,7 @@ $artist = $album->getArtist();
 
 			echo "<li class='tracklistRow'>
 					<div class='trackCount'>
-						<img class='play' src='assets/images/icons/play-white.png'>
+						<img class='play' src='assets/images/icons/play-white.png' onclick='setTrack(\"" . $albumSong->getId() . "\", tempPlaylist, true)'>
 						<span class='trackNumber'>$i</span>
 					</div>
 
@@ -55,7 +53,8 @@ $artist = $album->getArtist();
 					</div>
 
 					<div class='trackOptions'>
-						<img class='optionsButton' src='assets/images/icons/more.png'>
+						<input type='hidden' class='songId' value='" . $albumSong->getId() . "'>
+						<img class='optionsButton' src='assets/images/icons/more.png' onclick='showOptionsMenu(this)'>
 					</div>
 
 					<div class='trackDuration'>
@@ -66,15 +65,29 @@ $artist = $album->getArtist();
 				</li>";
 
 			$i = $i + 1;
-
-
-
 		}
 
 		?>
+
+		<script>
+			var tempSongIds = '<?php echo json_encode($songIdArray); ?>';
+			tempPlaylist = JSON.parse(tempSongIds);
+		</script>
 
 	</ul>
 </div>
 
 
-<?php include("includes/footer.php"); ?>
+<nav class="optionsMenu">
+	<input type="hidden" class="songId">
+	<?php echo Playlist::getPlaylistsDropdown($con, $userLoggedIn->getUsername()); ?>
+	<div class="item">Item 2</div>
+	<div class="item">Item 3</div>
+</nav>
+
+
+
+
+
+
+
