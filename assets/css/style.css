@@ -491,3 +491,7 @@ input:focus {
 .userInfo h1 {
     text-align: center;
 }
+
+.noResults {
+    text-align: center;
+}

@@ -26,7 +26,7 @@
 	</div>
 
 	<div class="navItem">
-		<a href="settings.php" class="navItemLink">Jay Malave</a>
+		<a href="settings.php" class="navItemLink"><?php echo $_SESSION['full_name'] ?></a>
 	</div>
 </div>
 
