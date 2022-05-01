@@ -1,5 +1,6 @@
 <?php
 include("includes/includedFiles.php");
+error_reporting(0)
 ?>
 
 <div class="playlistsContainer">
