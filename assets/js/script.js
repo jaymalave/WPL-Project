@@ -26,6 +26,12 @@ function openPage(url) {
 	history.pushState(null, null, url);
 }
 
+function logout(){
+	$.post("includes/handlers/ajax/logout.php", function(){
+		location.reload();
+	})
+}
+
 function createPlaylist() {
 	console.log(userLoggedIn);
 	var popup = prompt("Please enter the name of your playlist");
