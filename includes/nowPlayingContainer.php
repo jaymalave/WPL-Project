@@ -5,17 +5,17 @@
 	<div id="nowPlayingLeft">
 		<div class="content">
 			<span class="albumLink">
-				<img src="https://i.ytimg.com/vi/rb8Y38eilRM/maxresdefault.jpg" class="albumArtwork">
+				<img src="./assets/images/artwork/wyg.jpeg" class="albumArtwork">
 			</span>
 
 			<div class="trackInfo">
 
 				<span class="trackName">
-					<span>Happy Birthday</span>
+					<span>When You're Gone</span>
 				</span>
 
 				<span class="artistName">
-					<span>Reece Kenney</span>
+					<span>Shawn Mendes</span>
 				</span>
 
 			</div>
