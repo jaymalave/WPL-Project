@@ -11,5 +11,4 @@ if(isset($_POST['songId'])) {
 	echo json_encode($resultArray);
 }
 
-
 ?>

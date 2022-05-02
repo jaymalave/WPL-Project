@@ -42,9 +42,9 @@ $(document).on("change", "select.playlist", function() {
 
 function openPage(url) {
 
-	if(timer != null) {
-		clearTimeout(timer);
-	}
+	// if(timer != null) {
+	// 	clearTimeout(timer);
+	// }
 
 	if(url.indexOf("?") == -1) {
 		url = url + "?";
